@@ -2,8 +2,7 @@ package logic;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Date;
+
 
 
 public class Group {
@@ -20,8 +19,8 @@ public class Group {
         setGroupName(rs.getString(2));
         setCurator(rs.getString(3));
         setSpeciality(rs.getString(4));
-        setCuratorId(rs.getInt(7));
-        setStudentCount(rs.getInt(8));
+        setCuratorId(rs.getInt(5));
+        setStudentCount(rs.getInt(6));
     }
 
     public Group() {
@@ -39,7 +38,7 @@ public class Group {
     public String getGroupName() {
         return groupName;
     }
-    public void setGroupName(String firstName) {
+    public void setGroupName(String groupName) {
         this.groupName = groupName;
     }
 //Curator

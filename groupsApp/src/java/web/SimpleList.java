@@ -15,6 +15,7 @@ import logic.ManagementSystem;
 public class SimpleList extends HttpServlet
 {
 
+    @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         resp.setContentType("text / html;charset=UTF-8");

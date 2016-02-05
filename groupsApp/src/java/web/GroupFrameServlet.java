@@ -2,9 +2,7 @@ package web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -37,7 +35,6 @@ public class GroupFrameServlet extends HttpServlet
                     insertGroup(req);
                 }
             } catch (SQLException sql_e) {
-                sql_e.printStackTrace();
                 throw new IOException(sql_e.getMessage());
             } catch (ParseException p_e) {
                 throw new IOException(p_e.getMessage());
@@ -75,11 +72,13 @@ public class GroupFrameServlet extends HttpServlet
         getServletContext().getRequestDispatcher("/MainFrame.jsp").forward(req, resp);
     }
 
+    @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         processRequest(req, resp);
     }
 
+    @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         processRequest(req, resp);
