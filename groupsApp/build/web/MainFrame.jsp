@@ -13,7 +13,7 @@
                     <td>Количество студентов:<input type="text" name="count" value="${form.count}"/><br/></td>
                     <td>Список кураторов:
                         <select name="curatorId">
-                            <c:forEach var="group" items="${form.curators}">
+                            <c:forEach var="curator" items="${form.curators}">
                                 <c:choose>
                                     <c:when test="${curator.curatorId==form.curatorId}">
                                         <option value="${curator.curatorId}" selected><c:out value="${curator.nameCurator}"/></option>
@@ -63,9 +63,9 @@
             <table>
                 <tr>
                    <td>Количество студентов:<input type="text" name="newCount" value="${form.count}"/><br/></td>
-                    <td>Список групп:
+                    <td>Список кураторов:
                         <select name="newCuratorId">
-                        <c:forEach var="curator" items="${form.curator}">
+                        <c:forEach var="curator" items="${form.curators}">
                             <option value="${curator.curatorId}"><c:out value="${curator.nameCurator}"/></option>
                         </c:forEach>
                         </select>
