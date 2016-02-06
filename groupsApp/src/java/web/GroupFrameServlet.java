@@ -34,10 +34,8 @@ public class GroupFrameServlet extends HttpServlet
                 else {
                     insertGroup(req);
                 }
-            } catch (SQLException sql_e) {
+            } catch (SQLException | ParseException sql_e) {
                 throw new IOException(sql_e.getMessage());
-            } catch (ParseException p_e) {
-                throw new IOException(p_e.getMessage());
             }
         }
         // А теперь опять получаем данные для отображения на главной форме

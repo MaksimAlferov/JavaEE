@@ -30,10 +30,7 @@ public class ManagementSystem
                 Context ctx = new InitialContext();
                 instance.dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/StudentsDS");
                 con = dataSource.getConnection();
-            } catch (NamingException e) {
-                e.printStackTrace();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (NamingException | SQLException e) {
             }
         }
         return instance;
@@ -41,7 +38,8 @@ public class ManagementSystem
 
     public List getCurators() throws SQLException {
         List curators = new ArrayList();
-        Statement stmt = con.createStatement();
+        Statement stmt;
+        stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT curator_id, curator_nm FROM curators");
         while (rs.next()) {
             Curator cur = new Curator();
@@ -56,7 +54,8 @@ public class ManagementSystem
 
     public Collection getAllGroups() throws SQLException {
         Collection groups = new ArrayList();
-        Statement stmt = con.createStatement();
+        Statement stmt;
+        stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT group_id, groupName, curator, speciality, "
                 + "curator_id, student_count FROM groups ORDER BY groupName");
         while (rs.next()) {
@@ -70,7 +69,8 @@ public class ManagementSystem
 
     public Collection getGroupsFromCurator(Curator curator, int count) throws SQLException {
         Collection groups = new ArrayList();
-        PreparedStatement stmt = con.prepareStatement("SELECT group_id, groupName, curator, speciality, "
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("SELECT group_id, groupName, curator, speciality, "
                 + "curator_id, student_count FROM groups "
                 + "WHERE curator_id =  ? AND  student_count =  ? "
                 + "ORDER BY groupName");
@@ -88,7 +88,8 @@ public class ManagementSystem
 
     public Group getGroupById(int groupId) throws SQLException {
         Group group = null;
-        PreparedStatement stmt = con.prepareStatement("SELECT group_id, groupName, curator, speciality, "
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("SELECT group_id, groupName, curator, speciality, "
                 + "curator_id, student_count FROM groups WHERE group_id = ?");
         stmt.setInt(1, groupId);
         ResultSet rs = stmt.executeQuery();
@@ -101,7 +102,8 @@ public class ManagementSystem
     }
 
     public void moveGroupsToCurator(Curator oldCurator, int oldCount, Curator newCurator, int newCount) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("UPDATE groups SET curator_id = ?, student_count = ? "
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("UPDATE groups SET curator_id = ?, student_count = ? "
                 + "WHERE curator_id =  ? AND  student_count = ?");
         stmt.setInt(1, newCurator.getCuratorId());
         stmt.setInt(2, newCount);
@@ -111,14 +113,16 @@ public class ManagementSystem
     }
 
     public void removeGroupsFromCurator(Curator curator, int count) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("DELETE FROM groups WHERE curator_id = ? AND student_count = ?");
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("DELETE FROM groups WHERE curator_id = ? AND student_count = ?");
         stmt.setInt(1, curator.getCuratorId());
         stmt.setInt(2, count);
         stmt.execute();
     }
 
     public void insertGroup(Group group) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("INSERT INTO groups "
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("INSERT INTO groups "
                 + "(groupName, curator, speciality, curator_id, student_count)"
                 + "VALUES( ?,  ?,  ?,  ?,  ?)");
         stmt.setString(1, group.getGroupName());
@@ -130,7 +134,8 @@ public class ManagementSystem
     }
 
     public void updateGroup(Group group) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("UPDATE groups "
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("UPDATE groups "
                 + "SET groupName=?, curator=?, speciality=?, curator_id=?, student_count=?"
                 + "WHERE group_id=?");
         stmt.setString(1, group.getGroupName());
@@ -143,7 +148,8 @@ public class ManagementSystem
     }
 
     public void deleteGroup(Group group) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("DELETE FROM groups WHERE group_id =  ?");
+        PreparedStatement stmt;
+        stmt = con.prepareStatement("DELETE FROM groups WHERE group_id =  ?");
         stmt.setInt(1, group.getGroupId());
         stmt.execute();
     }
