@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/web/forms/MainFrameForm.java</file>
-            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/logic/ManagementSystem.java</file>
-            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/web/GroupFrameServlet.java</file>
             <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/web/MainFrameServlet.java</file>
+            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/web/GroupFrameServlet.java</file>
+            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/logic/ManagementSystem.java</file>
+            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/src/java/web/forms/MainFrameForm.java</file>
             <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Github/JavaEE/JavaEE/groupsApp/web/MainFrame.jsp</file>
         </group>
     </open-files>
 </project-private>

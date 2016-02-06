@@ -11,7 +11,7 @@
             <table>
                 <tr>
                     <td>Количество студентов:<input type="text" name="count" value="${form.count}"/><br/></td>
-                    <td>Список кураторов:
+                    <td>Куратор группы:
                         <select name="curatorId">
                             <c:forEach var="curator" items="${form.curators}">
                                 <c:choose>
@@ -36,7 +36,7 @@
                 <tr>
                     <th>&nbsp;</th>
                     <th>Наименование группы</th>
-                    <th>Куратор группы</th>
+                    <th>Прозвище куратора в группе</th>
                     <th>Специальность</th>
                 </tr>
                 <c:forEach var="group" items="${form.groups}">
